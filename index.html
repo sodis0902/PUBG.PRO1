@@ -1,1 +1,314 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUBG.PRO | Gaming</title>
+<meta name="description" content="PUBG.PRO - گیم‌پلی، هایلایت و محتوای پابجی">
 
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:#07090c;color:#fff;line-height:1.8;overflow-x:hidden
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1100px,90%);margin:auto}
+
+body:before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 10%,rgba(255,196,0,.12),transparent 35%),
+    linear-gradient(180deg,#07090c 0%,#0b0d11 100%);
+}
+body:after{
+  content:"";position:fixed;width:300px;height:300px;left:-120px;top:35%;
+  background:rgba(255,196,0,.06);filter:blur(90px);border-radius:50%;
+  pointer-events:none;z-index:-1;
+}
+
+.navbar{
+  position:fixed;top:12px;left:3%;right:3%;z-index:1000;
+  background:rgba(10,12,16,.94);border:1px solid #292d33;
+  border-radius:14px;padding:12px 18px
+}
+.nav-content{width:min(1100px,100%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:23px;font-weight:900}
+.logo span{color:#ffc400}
+.nav-links{display:flex;gap:20px}
+.nav-links a{font-size:13px;color:#aaa;transition:.2s}
+.nav-links a:hover{color:#ffc400}
+.nav-social{display:flex;gap:6px}
+.nav-social a{
+  width:35px;height:35px;display:grid;place-items:center;
+  background:#15181d;border-radius:8px;font-size:14px;transition:.2s
+}
+.nav-social a:hover{background:#ffc400;color:#111;transform:translateY(-2px)}
+.nav-telegram{
+  background:#ffc400;color:#111!important;padding:7px 13px;border-radius:8px;
+  font-size:12px;font-weight:bold
+}
+
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:140px 20px 80px
+}
+.hero-box{width:min(800px,100%);animation:up .7s ease}
+@keyframes up{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+.badge{
+  display:inline-block;color:#ffc400;border:1px solid #6e5a16;
+  background:rgba(255,196,0,.07);padding:7px 15px;border-radius:50px;
+  font-size:12px;margin-bottom:24px
+}
+.hero h1{font-size:clamp(58px,12vw,110px);line-height:1;font-weight:900;letter-spacing:-4px}
+.hero h1 span{color:#ffc400}
+.hero h2{font-size:23px;margin-top:22px}
+.hero p{color:#969ca3;max-width:650px;margin:16px auto;font-size:14px}
+.buttons,.social-buttons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn,.social-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  border-radius:9px;padding:12px 20px;font-weight:bold;transition:.2s
+}
+.btn-yellow{background:#ffc400;color:#111}
+.btn-dark{background:#12151a;border:1px solid #30343a}
+.btn:hover,.social-btn:hover{transform:translateY(-3px)}
+.youtube{background:#e60000}.instagram{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}
+.telegram{background:#229ed9}
+
+section{padding:80px 5%}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title small{color:#ffc400;font-weight:bold;font-size:11px;letter-spacing:1px}
+.section-title h2{font-size:32px;margin-top:4px}
+.section-title p{color:#858c94;font-size:13px}
+
+.cards,.highlight-grid{width:min(1100px,100%);margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card,.highlight,.about-box,.news-item,.video-box,.social-box{
+  background:#111419;border:1px solid #252a30
+}
+.card{
+  border-radius:15px;padding:27px;transition:.25s
+}
+.card:hover,.highlight:hover{transform:translateY(-5px);border-color:#ffc400}
+.icon{
+  width:54px;height:54px;display:grid;place-items:center;
+  background:rgba(255,196,0,.1);border-radius:13px;font-size:24px;margin-bottom:17px
+}
+.card h3{font-size:17px;margin-bottom:6px}
+.card p,.highlight p{color:#888f97;font-size:13px}
+
+.highlight{
+  min-height:190px;border-radius:15px;padding:24px;display:flex;
+  flex-direction:column;justify-content:flex-end;transition:.25s
+}
+.highlight .big{font-size:43px;margin-bottom:auto}
+
+.about-box{width:min(950px,100%);margin:auto;border-radius:18px;padding:35px}
+.about-box h2{margin-bottom:15px}.about-box h2 span{color:#ffc400}
+.about-box p{color:#969ca3;font-size:14px;line-height:2.2}
+
+.news{width:min(850px,100%);margin:auto}
+.news-item{
+  display:flex;align-items:center;gap:15px;border-radius:12px;padding:17px;margin-bottom:10px
+}
+.news-icon{
+  width:48px;height:48px;min-width:48px;display:grid;place-items:center;
+  background:rgba(255,196,0,.1);border-radius:11px;font-size:20px
+}
+.news h3{font-size:15px}.news p{color:#858c94;font-size:12px}
+
+.video-box{
+  width:min(850px,100%);margin:auto;border-radius:18px;padding:32px;text-align:center
+}
+.video-placeholder{
+  border:1px dashed #3a3f46;background:#090b0f;border-radius:13px;padding:38px 15px
+}
+.video-icon{font-size:48px;margin-bottom:8px}
+.video-placeholder h3{font-size:17px}.video-placeholder p{color:#858c94;font-size:12px;margin-top:5px}
+
+.social-box{
+  width:min(900px,100%);margin:auto;border-radius:20px;padding:45px 20px;text-align:center;
+  background:radial-gradient(circle at center,rgba(255,196,0,.10),transparent 65%),#111419
+}
+.social-box h2{font-size:28px}.social-box p{color:#90969d;font-size:13px;max-width:600px;margin:8px auto}
+
+footer{text-align:center;padding:30px 20px;border-top:1px solid #252a30;color:#70767d;font-size:12px}
+footer span{color:#ffc400}
+.footer-social{display:flex;justify-content:center;gap:8px;margin-bottom:14px}
+.footer-social a{width:38px;height:38px;display:grid;place-items:center;background:#111419;border-radius:8px}
+.footer-social a:hover{background:#ffc400;color:#111}
+
+.top{
+  position:fixed;bottom:18px;left:18px;width:42px;height:42px;display:grid;place-items:center;
+  background:#ffc400;color:#111;border-radius:50%;font-weight:bold;z-index:500
+}
+
+@media(max-width:800px){
+  .nav-links,.nav-social{display:none}
+  .cards,.highlight-grid{grid-template-columns:1fr}
+  .hero h1{font-size:64px}
+  .hero h2{font-size:19px}
+  section{padding:65px 5%}
+  .about-box{padding:27px 20px}
+}
+@media(max-width:500px){
+  .navbar{left:2%;right:2%;top:7px}
+  .logo{font-size:20px}.nav-telegram{font-size:11px;padding:7px 10px}
+  .hero h1{font-size:54px;letter-spacing:-3px}
+  .hero p{font-size:13px}
+  .btn,.social-btn{width:100%;max-width:300px}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-content">
+    <a class="logo" href="#home">PUBG<span>.PRO</span></a>
+
+    <div class="nav-links">
+      <a href="#home">خانه</a>
+      <a href="#content">محتوا</a>
+      <a href="#highlights">هایلایت</a>
+      <a href="#videos">ویدیوها</a>
+      <a href="#about">درباره ما</a>
+    </div>
+
+    <div class="nav-social">
+      <a href="https://www.youtube.com/@PUBG_PRO17" target="_blank" rel="noopener noreferrer">▶</a>
+      <a href="https://www.instagram.com/pubg.por1/" target="_blank" rel="noopener noreferrer">◎</a>
+    </div>
+
+    <a class="nav-telegram" href="https://t.me/PUBG_PR8" target="_blank" rel="noopener noreferrer">تلگرام</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-box">
+    <div class="badge">🎮 PUBG.PRO GAMING CHANNEL</div>
+    <h1>PUBG<span>.PRO</span></h1>
+    <h2>دنیای پابجی، اینجاست! 🔥</h2>
+    <p>به PUBG.PRO خوش اومدی؛ جایی برای عاشقان پابجی، گیمرهای حرفه‌ای و طرفداران دنیای گیمینگ.</p>
+
+    <div class="buttons">
+      <a class="btn btn-yellow" href="https://www.youtube.com/@PUBG_PRO17" target="_blank" rel="noopener noreferrer">▶️ کانال یوتیوب</a>
+      <a class="btn btn-dark" href="#content">مشاهده محتوا</a>
+    </div>
+
+    <div class="social-buttons">
+      <a class="social-btn instagram" href="https://www.instagram.com/pubg.por1/" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
+      <a class="social-btn telegram" href="https://t.me/PUBG_PR8" target="_blank" rel="noopener noreferrer">✈️ Telegram</a>
+    </div>
+  </div>
+</header>
+
+<section id="content">
+  <div class="section-title">
+    <small>PUBG.PRO</small>
+    <h2>محتوای ما</h2>
+    <p>هر چیزی که یک گیمر واقعی دوست دارد.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="icon">🔥</div><h3>هایلایت‌های خفن</h3><p>بهترین کیل‌ها، کلچ‌ها و لحظات هیجان‌انگیز بازی.</p></div>
+    <div class="card"><div class="icon">🎯</div><h3>گیم‌پلی حرفه‌ای</h3><p>گیم‌پلی‌های جذاب و رقابتی پابجی را دنبال کن.</p></div>
+    <div class="card"><div class="icon">⚡</div><h3>اخبار و آپدیت</h3><p>جدیدترین اخبار و اتفاقات دنیای PUBG.</p></div>
+  </div>
+</section>
+
+<section id="highlights">
+  <div class="section-title">
+    <small>BEST MOMENTS</small>
+    <h2>هایلایت‌ها</h2>
+    <p>بهترین لحظات PUBG.PRO</p>
+  </div>
+
+  <div class="highlight-grid">
+    <div class="highlight"><div class="big">🔥</div><h3>کلچ در آخرین لحظه</h3><p>وقتی فقط چند ثانیه برای برد باقی مانده...</p></div>
+    <div class="highlight"><div class="big">🎯</div><h3>Headshot</h3><p>یک شلیک، یک کیل، یک لحظه خفن.</p></div>
+    <div class="highlight"><div class="big">🏆</div><h3>Chicken Dinner</h3><p>رسیدن به آخرین نفر و گرفتن وین.</p></div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="section-title">
+    <small>YOUTUBE</small>
+    <h2>ویدیوهای PUBG.PRO 🎬</h2>
+    <p>برای دیدن ویدیوهای واقعی کانال، وارد YouTube شو.</p>
+  </div>
+
+  <div class="video-box">
+    <div class="video-placeholder">
+      <div class="video-icon">▶️</div>
+      <h3>کانال رسمی PUBG.PRO در YouTube</h3>
+      <p>گیم‌پلی، هایلایت، کلیپ و محتوای جدید پابجی</p>
+    </div>
+
+    <div class="buttons">
+      <a class="btn btn-yellow" href="https://www.youtube.com/@PUBG_PRO17" target="_blank" rel="noopener noreferrer">▶️ مشاهده کانال YouTube</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-title">
+    <small>ABOUT US</small>
+    <h2>درباره ما</h2>
+  </div>
+
+  <div class="about-box">
+    <h2>به <span>PUBG.PRO</span> خوش آمدید 🎮</h2>
+    <p>
+      PUBG.PRO یک کانال گیمینگ برای علاقه‌مندان به پابجی و دنیای بازی‌های رقابتی است.
+      <br><br>
+      در این کانال می‌توانید گیم‌پلی، هایلایت‌ها، کلیپ‌های جذاب و محتوای سرگرم‌کننده گیمینگ را دنبال کنید.
+      <br><br>
+      هدف ما ساختن یک کامیونیتی گیمینگ پرانرژی برای تمام گیمرهاست.
+      <br><br>
+      🔥 بازی کن &nbsp; | &nbsp; 🎯 بهتر شو &nbsp; | &nbsp; 🏆 حرفه‌ای شو
+    </p>
+  </div>
+</section>
+
+<section id="news">
+  <div class="section-title">
+    <small>LATEST NEWS</small>
+    <h2>اخبار و آپدیت‌ها</h2>
+    <p>جدیدترین اتفاقات دنیای گیمینگ</p>
+  </div>
+
+  <div class="news">
+    <div class="news-item"><div class="news-icon">📰</div><div><h3>اخبار جدید PUBG</h3><p>آخرین اخبار و اتفاقات بازی را دنبال کنید.</p></div></div>
+    <div class="news-item"><div class="news-icon">🎮</div><div><h3>محتوای جدید</h3><p>گیم‌پلی‌ها و هایلایت‌های جدید در راه هستند.</p></div></div>
+    <div class="news-item"><div class="news-icon">🔥</div><div><h3>کلیپ‌های خفن</h3><p>بهترین لحظات بازی را از دست نده.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="social-box">
+    <h2>PUBG.PRO را دنبال کن 🚀</h2>
+    <p>برای دیدن جدیدترین گیم‌پلی‌ها، کلیپ‌ها و اخبار گیمینگ ما را در شبکه‌های اجتماعی دنبال کنید.</p>
+
+    <div class="social-buttons">
+      <a class="social-btn youtube" href="https://www.youtube.com/@PUBG_PRO17" target="_blank" rel="noopener noreferrer">▶️ YouTube</a>
+      <a class="social-btn instagram" href="https://www.instagram.com/pubg.por1/" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
+      <a class="social-btn telegram" href="https://t.me/PUBG_PR8" target="_blank" rel="noopener noreferrer">✈️ Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-social">
+    <a href="https://www.youtube.com/@PUBG_PRO17" target="_blank" rel="noopener noreferrer">▶</a>
+    <a href="https://www.instagram.com/pubg.por1/" target="_blank" rel="noopener noreferrer">◎</a>
+    <a href="https://t.me/PUBG_PR8" target="_blank" rel="noopener noreferrer">✈</a>
+  </div>
+  © 2026 <span>PUBG.PRO</span> — تمامی حقوق محفوظ است.
+  <br>Gaming • PUBG • Highlights
+</footer>
+
+<a class="top" href="#home">↑</a>
+
+</body>
+</html>
