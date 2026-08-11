@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -16,16 +17,71 @@ body{
 a{text-decoration:none;color:inherit}
 .container{width:min(1100px,90%);margin:auto}
 
+/* PUBG BACKGROUND + CINEMATIC MOTION */
+
 body:before{
-  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  content:"";
+  position:fixed;
+  inset:-25px;
+  z-index:-2;
+  pointer-events:none;
   background:
-    radial-gradient(circle at 50% 10%,rgba(255,196,0,.12),transparent 35%),
-    linear-gradient(180deg,#07090c 0%,#0b0d11 100%);
+    linear-gradient(
+      rgba(0,0,0,.78),
+      rgba(0,0,0,.93)
+    ),
+    url("images/pubg-bg.jpg");
+  background-size:cover;
+  background-position:center center;
+  animation:pubgMove 25s ease-in-out infinite alternate;
+  transform-origin:center;
 }
+
+@keyframes pubgMove{
+  0%{
+    transform:scale(1);
+    background-position:center center;
+  }
+  50%{
+    transform:scale(1.07);
+    background-position:55% 45%;
+  }
+  100%{
+    transform:scale(1.03);
+    background-position:45% 55%;
+  }
+}
+
+/* MOVING GAMING LIGHT / GLOW */
+
 body:after{
-  content:"";position:fixed;width:300px;height:300px;left:-120px;top:35%;
-  background:rgba(255,196,0,.06);filter:blur(90px);border-radius:50%;
-  pointer-events:none;z-index:-1;
+  content:"";
+  position:fixed;
+  width:450px;
+  height:450px;
+  left:-150px;
+  top:35%;
+  background:rgba(255,196,0,.07);
+  border-radius:50%;
+  filter:blur(100px);
+  pointer-events:none;
+  z-index:-1;
+  animation:gamingGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes gamingGlow{
+  0%{
+    transform:translate(0,0) scale(1);
+    opacity:.45;
+  }
+  50%{
+    transform:translate(180px,-60px) scale(1.25);
+    opacity:.8;
+  }
+  100%{
+    transform:translate(320px,80px) scale(.9);
+    opacity:.4;
+  }
 }
 
 .navbar{
@@ -84,7 +140,8 @@ section{padding:80px 5%}
 
 .cards,.highlight-grid{width:min(1100px,100%);margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .card,.highlight,.about-box,.news-item,.video-box,.social-box{
-  background:#111419;border:1px solid #252a30
+  background:rgba(17,20,25,.92);border:1px solid #252a30;
+  backdrop-filter:blur(3px);
 }
 .card{
   border-radius:15px;padding:27px;transition:.25s
@@ -121,14 +178,14 @@ section{padding:80px 5%}
   width:min(850px,100%);margin:auto;border-radius:18px;padding:32px;text-align:center
 }
 .video-placeholder{
-  border:1px dashed #3a3f46;background:#090b0f;border-radius:13px;padding:38px 15px
+  border:1px dashed #3a3f46;background:rgba(9,11,15,.9);border-radius:13px;padding:38px 15px
 }
 .video-icon{font-size:48px;margin-bottom:8px}
 .video-placeholder h3{font-size:17px}.video-placeholder p{color:#858c94;font-size:12px;margin-top:5px}
 
 .social-box{
   width:min(900px,100%);margin:auto;border-radius:20px;padding:45px 20px;text-align:center;
-  background:radial-gradient(circle at center,rgba(255,196,0,.10),transparent 65%),#111419
+  background:radial-gradient(circle at center,rgba(255,196,0,.10),transparent 65%),rgba(17,20,25,.94)
 }
 .social-box h2{font-size:28px}.social-box p{color:#90969d;font-size:13px;max-width:600px;margin:8px auto}
 
@@ -150,6 +207,7 @@ footer span{color:#ffc400}
   .hero h2{font-size:19px}
   section{padding:65px 5%}
   .about-box{padding:27px 20px}
+  body:before{animation-duration:32s}
 }
 @media(max-width:500px){
   .navbar{left:2%;right:2%;top:7px}
@@ -157,6 +215,7 @@ footer span{color:#ffc400}
   .hero h1{font-size:54px;letter-spacing:-3px}
   .hero p{font-size:13px}
   .btn,.social-btn{width:100%;max-width:300px}
+  body:after{width:300px;height:300px;filter:blur(80px)}
 }
 </style>
 </head>
